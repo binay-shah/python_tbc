@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Arithmetic Quiz</title>
+<style>
+.code{
+	background-color: #f2f2f2;
+	width: 250px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p class="feedback">Some text in the Modal..</p>
+  </div>
+
+</div>
+
+<div>
+	<ul>
+		<li>
+			<h2>Quiz: Changing Variable Values</h2>
+				<p>How does changing the value of a variable affect another variable that was defined in terms of it? Let's look at an example.</br>
+
+We're intentionally not providing a place to execute the code here, because we want to help you practice the important skill of walking through lines of code by hand.</br>
+
+Each line of code executes in order, one at a time, with control going from one line to the next.</p>
+		<div class="code">
+			<p>>>> carrots = 24</p>
+			<p>>>> rabbits = 8</p>
+			<p>>>> crs_per_rab = carrots/rabbits</p>
+		</div>
+		<p>Now we add a new 4th line to this code, that assigns a new value to the <b>rabbits</b> variable:</p>
+		<div class="code">
+			<p>>>> rabbits = 12</p>			
+		</div>
+		<div>
+			<h4>Question</h4>
+			<p>If we now add this new 5th line of code to the above, what will the output be?</p>
+			<div class="code">
+			<p>>>> print(crs_per_rab)</p>
+			</div>
+			<form id="quizForm">
+			  <input type="radio" name="radios" value="0.5">0.5</br>
+			  <input type="radio" name="radios" value="2.0">2.0</br>
+			  <input type="radio" name="radios" value="3.0">3.0</br>
+			  <input type="radio" name="radios" value="None of the above">None of the above</br>
+			  <input type="submit" value="Submit">
+			</form>
+		</div>
+		</li>
+				
+		
+	</ul>
+</div>
+<script>
+
+// Get the modal
+var modal = document.querySelector("#myModal");	 
+console.log(modal)
+// Get the <span> element that closes the modal
+var span = document.querySelector(".close");
+
+var feedback = document.querySelector(".feedback");
+span.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+var form = document.querySelector("#quizForm");
+	form.addEventListener('submit', function(evt){
+		evt.preventDefault();
+		
+		for (i=0;i<document.forms[0].radios.length;i++) {
+		if (document.forms[0].radios[i].checked) {
+		var user_input = document.forms[0].radios[i].value;
+		
+		if(user_input == 3.0){
+			feedback.textContent = "That's right"
+			modal.style.display = "block";
+		}
+		else{
+			feedback.textContent = "Not quite. Remember the lines of code will execute one at a time, in order."
+			modal.style.display = "block";
+		}
+	}
+}
+		
+	})
+</script>
+</body>
+</html>
