@@ -68,11 +68,9 @@ def edit_phone(cursor):
     
 
   
-def save_phone_list():
-    f = open("myphones.csv", 'w', newline='')
-    for item in phones:
-        csv.writer(f).writerow(item)
-    f.close()
+def save_phone_list(cursor):
+    cursor.execute("commit")
+    
   
 def load_phone_list():
     conn = sqlite3.connect("pnones.db")
