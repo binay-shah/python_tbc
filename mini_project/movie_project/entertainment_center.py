@@ -26,14 +26,14 @@ except:
     js = None
 
 results = js['results']
-print(results)
+#print(results)
 
 
 movies = []
 
 for movie in results:	
     movie_videos_url = 'https://api.themoviedb.org/3/movie/{}/videos?api_key=34b041a422f882244116c2c49cfe9554'.format(movie['id'])
-    print(movie_videos_url)
+    
     video_response = urllib.request.urlopen(movie_videos_url, context=ctx)
     data = video_response.read().decode()
     js = json.loads(data)
